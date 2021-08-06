@@ -36,16 +36,20 @@ This is a simple example of Envoy control plane connected via gRPC using Go
     └── envoy-bootstrap-xds.yaml (Base config for Envoy xDS https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration)
 ```
 
-## Running
+## Install
 
-#### Install getenvoy.io
+### Install getenvoy.io
 ```
-sudo make install
+curl -L https://getenvoy.io/cli | bash -s -- -b /usr/local/bin
 ```
+### Install Golang
+https://golang.org/doc/install
+
+## Running
 
 #### Runs an instance of Envoy
 ```
-make envoy
+func-e run -c ./deploy/envoy-bootstrap-xds.yaml --drain-time-s 1 -l debug
 ```
 
 #### New terminal to startup golang gRPC control-plane and HTTP server
